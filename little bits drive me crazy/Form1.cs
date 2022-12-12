@@ -50,9 +50,19 @@ namespace little_bits_drive_me_crazy
         {
             foreach(var particle in particles)
             {
-                var directionInRadians = particle.Direction / 180 * Math.PI;
-                particle.X += (float)(particle.Speed * Math.Cos(directionInRadians));
-                particle.Y += (float)(particle.Speed * Math.Sin(directionInRadians));
+                particle.Life -= 1;
+                if (particle.Life < 0)
+                {
+                    particle.Life = 20 + Particle.rnd.Next(100);
+                    particle.X = DisPic.Image.Width / 2;
+                    particle.Y = DisPic.Image.Height / 2;
+                }
+                else
+                {
+                    var directionInRadians = particle.Direction / 180 * Math.PI;
+                    particle.X += (float)(particle.Speed * Math.Cos(directionInRadians));
+                    particle.Y += (float)(particle.Speed * Math.Sin(directionInRadians));
+                }
             }
         }
         private void Render(Graphics g)
