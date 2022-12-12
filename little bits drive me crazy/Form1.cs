@@ -35,24 +35,32 @@ namespace little_bits_drive_me_crazy
 
         }
 
-        int counter = 0;
+        
         private void timer1_Tick(object sender, EventArgs e)
         {
-            counter++;
+            UpdateState();
             using (var g = Graphics.FromImage(DisPic.Image))
             {
-                g.DrawString(
-                    counter.ToString(),
-                    new Font("Arial", 12),
-                    new SolidBrush(Color.Black),
-                    new PointF
-                    {
-                        X = DisPic.Image.Width / 2,
-                        Y = DisPic.Image.Height / 2
-                    }
-                );
+                g.Clear(Color.White);
+                Render(g);
             }
             DisPic.Invalidate();
+        }
+        private void UpdateState()
+        {
+            foreach(var particle in particles)
+            {
+                var directionInRadians = particle.Direction / 180 * Math.PI;
+                particle.X += (float)(particle.Speed * Math.Cos(directionInRadians));
+                particle.Y += (float)(particle.Speed * Math.Sin(directionInRadians));
+            }
+        }
+        private void Render(Graphics g)
+        {
+            foreach(var particle in particles)
+            {
+                particle.Draw(g);
+            }
         }
     }
 }
