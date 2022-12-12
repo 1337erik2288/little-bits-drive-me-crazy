@@ -34,5 +34,25 @@ namespace little_bits_drive_me_crazy
         {
 
         }
+
+        int counter = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            counter++;
+            using (var g = Graphics.FromImage(DisPic.Image))
+            {
+                g.DrawString(
+                    counter.ToString(),
+                    new Font("Arial", 12),
+                    new SolidBrush(Color.Black),
+                    new PointF
+                    {
+                        X = DisPic.Image.Width / 2,
+                        Y = DisPic.Image.Height / 2
+                    }
+                );
+            }
+            DisPic.Invalidate();
+        }
     }
 }
