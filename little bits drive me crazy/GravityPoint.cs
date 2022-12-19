@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,16 @@ namespace little_bits_drive_me_crazy
 
             particle.SpeedX += gX * Power / r2;
             particle.SpeedY += gY * Power / r2;
+        }
+        public override void Render(Graphics g)
+        {
+            g.DrawEllipse(
+                   new Pen(Color.Red),
+                   X - Power / 2,
+                   Y - Power / 2,
+                   Power,
+                   Power
+               );
         }
     }
 }

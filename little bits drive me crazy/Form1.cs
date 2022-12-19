@@ -12,12 +12,14 @@ namespace little_bits_drive_me_crazy
 {
     public partial class Form1 : Form
     {
-        List<Particle> particles = new List<Particle>();
         List<Emitter> emitters = new List<Emitter>();
         Emitter emitter;
+        GravityPoint point1; 
+        GravityPoint point2;
         public Form1()
         {
             InitializeComponent();
+            DisPic.Image = new Bitmap(DisPic.Width, DisPic.Height);
 
             this.emitter = new Emitter
             {
@@ -34,33 +36,22 @@ namespace little_bits_drive_me_crazy
 
             emitters.Add(this.emitter);
 
-            DisPic.Image = new Bitmap(DisPic.Width, DisPic.Height);
-            /*
-            emitter = new TopEmitter
+            point1 = new GravityPoint
             {
-                Width = DisPic.Width,
-                GravitationY = 0.25f,
-                
+                X = DisPic.Width / 2 + 100,
+                Y = DisPic.Height / 2,
             };
+            point2 = new GravityPoint
+            {
+                X = DisPic.Width / 2 - 100,
+                Y = DisPic.Height / 2,
+            };
+
+            emitter.impactPoints.Add(point1);
+            emitter.impactPoints.Add(point2);
+
             
-            emitter.impactPoints.Add(new GravityPoint
-            {
-                X = (float)(DisPic.Width * 0.25),
-                Y = DisPic.Height / 2
-            });
 
-            emitter.impactPoints.Add(new AntiGravityPoint
-            {
-                X = DisPic.Width / 2,
-                Y = DisPic.Height / 2
-            });
-
-            emitter.impactPoints.Add(new GravityPoint
-            {
-                X = (float)(DisPic.Width * 0.75),
-                Y = DisPic.Height / 2
-            });
-            */
 
         }
 
@@ -94,6 +85,23 @@ namespace little_bits_drive_me_crazy
         private void tbDirection_Scroll(object sender, EventArgs e)
         {
             emitter.Direction = tbDirection.Value;
+            lblDirection.Text = $"{tbDirection.Value}°";
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbGraviton_Scroll(object sender, EventArgs e)
+        {
+            point1.Power = tbGraviton.Value;
+
+        }
+
+        private void tbGraviton2_Scroll(object sender, EventArgs e)
+        {
+            point2.Power = tbGraviton2.Value;
         }
     }
 }
