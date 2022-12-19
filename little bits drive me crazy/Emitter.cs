@@ -14,7 +14,7 @@ namespace little_bits_drive_me_crazy
         public int MousePositionX;
         public int MousePositionY;
         public float GravitationX = 0;
-        public float GravitationY = 1;
+        public float GravitationY = 0; //Гравитации нет! Австралия - вымысел! Камни - зло! Скупайте фантики!!!
 
         public void UpdateState()
         {
@@ -36,18 +36,16 @@ namespace little_bits_drive_me_crazy
                 }
                 else
                 {
-                    float gX = gravityPoints[0].X - particle.X;
-                    float gY = gravityPoints[0].Y - particle.Y;
+                    foreach (var point in gravityPoints)
+                    {
+                        float gX = point.X - particle.X;
+                        float gY = point.Y - particle.Y;
+                        float r2 = (float)Math.Max(100, gX * gX + gY * gY);
+                        float M = 100;
 
-                    
-                    float r2 = gX * gX + gY * gY;
-                    float M = 100; 
-
-                    
-                    particle.SpeedX += (gX) * M / r2;
-                    particle.SpeedY += (gY) * M / r2;
-                    particle.SpeedX += GravitationX;
-                    particle.SpeedY += GravitationY;
+                        particle.SpeedX += (gX) * M / r2;
+                        particle.SpeedY += (gY) * M / r2;
+                    }
 
                     particle.X += particle.SpeedX;
                     particle.Y += particle.SpeedY;

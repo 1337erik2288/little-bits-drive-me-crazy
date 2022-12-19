@@ -25,6 +25,16 @@ namespace little_bits_drive_me_crazy
                 DisPic.Height / 2
                 ));
 
+            emitter.gravityPoints.Add(new Point(
+                (int)(DisPic.Width * 0.25),
+                DisPic.Height / 2
+                ));
+
+            emitter.gravityPoints.Add(new Point(
+                (int)(DisPic.Width * 0.75),
+                DisPic.Height / 2
+                ));
+
         }
 
         private void DisPic_Click(object sender, EventArgs e)
