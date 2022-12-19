@@ -101,7 +101,8 @@ namespace little_bits_drive_me_crazy
 
         private void tbGraviton2_Scroll(object sender, EventArgs e)
         {
-            point2.Power = tbGraviton2.Value;
+            point1.Power = tbGraviton2.Value;
+
         }
     }
 }

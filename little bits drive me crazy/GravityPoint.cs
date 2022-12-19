@@ -16,10 +16,14 @@ namespace little_bits_drive_me_crazy
         {
             float gX = X - particle.X;
             float gY = Y - particle.Y;
-            float r2 = (float)Math.Max(100, gX * gX + gY * gY);
 
-            particle.SpeedX += gX * Power / r2;
-            particle.SpeedY += gY * Power / r2;
+            double r = Math.Sqrt(gX * gX + gY * gY); 
+            if (r + particle.Radius < Power / 2) 
+            {
+                float r2 = (float)Math.Max(100, gX * gX + gY * gY);
+                particle.SpeedX += gX * Power / r2;
+                particle.SpeedY += gY * Power / r2;
+            }
         }
         public override void Render(Graphics g)
         {
@@ -30,6 +34,7 @@ namespace little_bits_drive_me_crazy
                    Power,
                    Power
                );
+            
         }
     }
 }

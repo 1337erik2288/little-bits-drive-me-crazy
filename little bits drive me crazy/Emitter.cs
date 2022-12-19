@@ -40,17 +40,7 @@ namespace little_bits_drive_me_crazy
                 if (particle.Life < 0)
                 {
                     ResetParticle(particle);
-                    /* particle.Life = 20 + Particle.rnd.Next(100);
-                    particle.X = MousePositionX;
-                    particle.Y = MousePositionY;
-                    var direction = (double)Particle.rnd.Next(360);
-                    var speed = 1 + Particle.rnd.Next(10);
-
-                    particle.SpeedX = (float)(Math.Cos(direction / 180 * Math.PI) * speed);
-                    particle.SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed);
-                    ;
-                    particle.Radius = 2 + Particle.rnd.Next(10);
-                    */
+                    
                     if (particlesToCreate > 0)
                     {
                         
@@ -60,13 +50,17 @@ namespace little_bits_drive_me_crazy
                 }
                 else
                 {
+                    particle.X += particle.SpeedX;
+                    particle.Y += particle.SpeedY;
+
+                    particle.Life -= 1;
                     foreach (var point in impactPoints)
                     {
                         point.ImpactParticle(particle);
                     }
 
-                    particle.X += particle.SpeedX;
-                    particle.Y += particle.SpeedY;
+                    particle.SpeedX += GravitationX;
+                    particle.SpeedY += GravitationY;
                 }
             }
             while (particlesToCreate >= 1)
@@ -76,34 +70,7 @@ namespace little_bits_drive_me_crazy
                 ResetParticle(particle);
                 particles.Add(particle);
             }
-            /*
-            for (var i = 0; i < 10; ++i)
-            {
-                if (particles.Count < ParticlesCount)
-                {
-                    var particle = CreateParticle();
-                    ResetParticle(particle);
-                    particles.Add(particle);
-
-                    ResetParticle(particle);
-
-                    //*
-                    var particle = new ParticleColorful();
-
-                    particle.FromColor = Color.Yellow;
-                    particle.ToColor = Color.FromArgb(0, Color.Magenta);
-                    particle.X = MousePositionX;
-                    particle.Y = MousePositionY;
-                    //
-                    particles.Add(particle);
-                    
-                }
-                else
-                {
-                    break;
-                }
-            }
-            */
+            
             
         }
         public void Render(Graphics g)
