@@ -13,22 +13,13 @@ namespace little_bits_drive_me_crazy
     public partial class Form1 : Form
     {
         List<Particle> particles = new List<Particle>();
+        Emitter emitter = new Emitter();
         public Form1()
         {
             InitializeComponent();
 
             DisPic.Image = new Bitmap(DisPic.Width, DisPic.Height);
-            /*
-            for (var i = 0; i < 500; i++)
-            {
-                var particle = new Particle();
-
-                particle.X = DisPic.Image.Width / 2;
-                particle.Y = DisPic.Image.Height / 2;
-
-                particles.Add(particle);    
-            }
-            */
+            
         }
 
         private void DisPic_Click(object sender, EventArgs e)
@@ -39,71 +30,23 @@ namespace little_bits_drive_me_crazy
         
         private void timer1_Tick(object sender, EventArgs e)
         {
-            UpdateState();
+            emitter.UpdateState();
             using (var g = Graphics.FromImage(DisPic.Image))
             {
                 g.Clear(Color.Black); 
-                Render(g);
+                emitter.Render(g);
             }
             DisPic.Invalidate();
         }
-        private void UpdateState()
-        {
-            foreach(var particle in particles)
-            {
-                particle.Life -= 1;
-                if (particle.Life < 0)
-                {
-                    particle.Life = 20 + Particle.rnd.Next(100);
-                    particle.X = MousePositionX;
-                    particle.Y = MousePositionY;
-                    var direction = (double)Particle.rnd.Next(360);
-                    var speed = 1 + Particle.rnd.Next(10);
-
-                    particle.SpeedX = (float)(Math.Cos(direction / 180 * Math.PI) * speed);
-                    particle.SpeedY = -(float)(Math.Sin(direction / 180 * Math.PI) * speed);
-                    ;
-                    particle.Radius = 2 + Particle.rnd.Next(10);
-                }
-                else
-                {
-                    particle.X += particle.SpeedX;
-                    particle.Y += particle.SpeedY;
-                }
-            }
-            for (var i = 0; i < 10; ++i)
-            {
-                if (particles.Count < 500)
-                {
-                    var particle = new ParticleColorful();
-                    
-                    particle.FromColor = Color.Yellow;
-                    particle.ToColor = Color.FromArgb(0, Color.Magenta);
-                    particle.X = MousePositionX;
-                    particle.Y = MousePositionY;
-                    particles.Add(particle);
-                }
-                else
-                {
-                    break;
-                }
-            }
-        }
-        private void Render(Graphics g)
-        {
-            foreach(var particle in particles)
-            {
-                particle.Draw(g);
-            }
-        }
+        
 
         private int MousePositionX = 0;
         private int MousePositionY = 0;
 
         private void DisPic_MouseMove(object sender, MouseEventArgs e)
         {
-            MousePositionX = e.X;
-            MousePositionY = e.Y;
+            emitter.MousePositionX = e.X;
+            emitter.MousePositionY = e.Y;
         }
     }
 }
