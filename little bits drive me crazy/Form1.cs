@@ -13,27 +13,37 @@ namespace little_bits_drive_me_crazy
     public partial class Form1 : Form
     {
         List<Particle> particles = new List<Particle>();
-        Emitter emitter = new Emitter();
+        Emitter emitter;
         public Form1()
         {
             InitializeComponent();
 
             DisPic.Image = new Bitmap(DisPic.Width, DisPic.Height);
+            emitter = new TopEmitter
+            {
+                Width = DisPic.Width,
+                GravitationY = 0.25f,
+                
+            };
+            
+            emitter.impactPoints.Add(new GravityPoint
+            {
+                X = (float)(DisPic.Width * 0.25),
+                Y = DisPic.Height / 2
+            });
 
-            emitter.gravityPoints.Add(new Point(
-                DisPic.Width / 2, 
-                DisPic.Height / 2
-                ));
+            emitter.impactPoints.Add(new AntiGravityPoint
+            {
+                X = DisPic.Width / 2,
+                Y = DisPic.Height / 2
+            });
 
-            emitter.gravityPoints.Add(new Point(
-                (int)(DisPic.Width * 0.25),
-                DisPic.Height / 2
-                ));
-
-            emitter.gravityPoints.Add(new Point(
-                (int)(DisPic.Width * 0.75),
-                DisPic.Height / 2
-                ));
+            emitter.impactPoints.Add(new GravityPoint
+            {
+                X = (float)(DisPic.Width * 0.75),
+                Y = DisPic.Height / 2
+            });
+            
 
         }
 
