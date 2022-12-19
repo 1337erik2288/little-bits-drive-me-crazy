@@ -19,7 +19,12 @@ namespace little_bits_drive_me_crazy
             InitializeComponent();
 
             DisPic.Image = new Bitmap(DisPic.Width, DisPic.Height);
-            
+
+            emitter.gravityPoints.Add(new Point(
+                DisPic.Width / 2, 
+                DisPic.Height / 2
+                ));
+
         }
 
         private void DisPic_Click(object sender, EventArgs e)
