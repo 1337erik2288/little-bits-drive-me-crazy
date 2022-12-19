@@ -13,12 +13,29 @@ namespace little_bits_drive_me_crazy
     public partial class Form1 : Form
     {
         List<Particle> particles = new List<Particle>();
+        List<Emitter> emitters = new List<Emitter>();
         Emitter emitter;
         public Form1()
         {
             InitializeComponent();
 
+            this.emitter = new Emitter
+            {
+                Direction = 0,
+                Spreading = 10,
+                SpeedMin = 10,
+                SpeedMax = 10,
+                ColorFrom = Color.Gold,
+                ColorTo = Color.FromArgb(0, Color.Red),
+                ParticlesPerTick = 10,
+                X = DisPic.Width / 2,
+                Y = DisPic.Height / 2,
+            };
+
+            emitters.Add(this.emitter);
+
             DisPic.Image = new Bitmap(DisPic.Width, DisPic.Height);
+            /*
             emitter = new TopEmitter
             {
                 Width = DisPic.Width,
@@ -43,7 +60,7 @@ namespace little_bits_drive_me_crazy
                 X = (float)(DisPic.Width * 0.75),
                 Y = DisPic.Height / 2
             });
-            
+            */
 
         }
 
@@ -72,6 +89,11 @@ namespace little_bits_drive_me_crazy
         {
             emitter.MousePositionX = e.X;
             emitter.MousePositionY = e.Y;
+        }
+
+        private void tbDirection_Scroll(object sender, EventArgs e)
+        {
+            emitter.Direction = tbDirection.Value;
         }
     }
 }
