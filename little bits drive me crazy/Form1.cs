@@ -15,12 +15,12 @@ namespace little_bits_drive_me_crazy
         List<Emitter> emitters = new List<Emitter>();
         Emitter emitter;
         GravityPoint point1; 
-        GravityPoint point2;
+        //GravityPoint point2;
         public Form1()
         {
             InitializeComponent();
             DisPic.Image = new Bitmap(DisPic.Width, DisPic.Height);
-
+            
             this.emitter = new Emitter
             {
                 Direction = 0,
@@ -33,14 +33,16 @@ namespace little_bits_drive_me_crazy
                 X = DisPic.Width / 2,
                 Y = DisPic.Height / 2,
             };
-
+            
             emitters.Add(this.emitter);
-
+            
             point1 = new GravityPoint
             {
                 X = DisPic.Width / 2 + 100,
                 Y = DisPic.Height / 2,
             };
+            emitter.impactPoints.Add(point1);
+            /*
             point2 = new GravityPoint
             {
                 X = DisPic.Width / 2 - 100,
@@ -49,15 +51,16 @@ namespace little_bits_drive_me_crazy
 
             emitter.impactPoints.Add(point1);
             emitter.impactPoints.Add(point2);
+            */
 
-            
 
 
         }
-
+        private int MousePositionX = 0;
+        private int MousePositionY = 0;
         private void DisPic_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         
@@ -73,13 +76,13 @@ namespace little_bits_drive_me_crazy
         }
         
 
-        private int MousePositionX = 0;
-        private int MousePositionY = 0;
+        
 
         private void DisPic_MouseMove(object sender, MouseEventArgs e)
         {
-            emitter.MousePositionX = e.X;
-            emitter.MousePositionY = e.Y;
+             
+            //emitter.MousePositionX = e.X;
+            //emitter.MousePositionY = e.Y;
         }
 
         private void tbDirection_Scroll(object sender, EventArgs e)
@@ -101,7 +104,13 @@ namespace little_bits_drive_me_crazy
 
         private void tbGraviton2_Scroll(object sender, EventArgs e)
         {
-            point2.Power = tbGraviton2.Value;
+            //point2.Power = tbGraviton2.Value;
+        }
+
+        private void DisPic_MouseClick(object sender, MouseEventArgs e)
+        {
+            point1.X = e.X;
+            point1.Y = e.Y;
         }
     }
 }

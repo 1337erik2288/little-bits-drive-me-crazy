@@ -14,7 +14,7 @@ namespace little_bits_drive_me_crazy
         public int MousePositionX;
         public int MousePositionY;
         public float GravitationX = 0;
-        public float GravitationY = 1; //Гравитации нет! Австралия - вымысел! Камни - зло! Скупайте фантики!!!
+        public float GravitationY = 0; //Гравитации нет! Австралия - вымысел! Камни - зло! Скупайте фантики!!!
         public int ParticlesCount = 500;
         public int X; 
         public int Y;  

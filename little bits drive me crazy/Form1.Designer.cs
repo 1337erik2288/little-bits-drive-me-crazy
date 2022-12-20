@@ -49,6 +49,7 @@
             this.DisPic.TabIndex = 0;
             this.DisPic.TabStop = false;
             this.DisPic.Click += new System.EventHandler(this.DisPic_Click);
+            this.DisPic.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DisPic_MouseClick);
             this.DisPic.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DisPic_MouseMove);
             // 
             // timer1
