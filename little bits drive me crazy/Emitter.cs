@@ -36,9 +36,10 @@ namespace little_bits_drive_me_crazy
 
             foreach (var particle in particles)
             {
-                
+                particle.Life -= 1;
                 if (particle.Life < 0)
                 {
+                    
                     ResetParticle(particle);
                     /* particle.Life = 20 + Particle.rnd.Next(100);
                     particle.X = MousePositionX;
@@ -60,13 +61,17 @@ namespace little_bits_drive_me_crazy
                 }
                 else
                 {
+                    particle.X += particle.SpeedX;
+                    particle.Y += particle.SpeedY;
+
+                    
+
                     foreach (var point in impactPoints)
                     {
                         point.ImpactParticle(particle);
                     }
 
-                    particle.X += particle.SpeedX;
-                    particle.Y += particle.SpeedY;
+                    
                 }
             }
             while (particlesToCreate >= 1)
@@ -121,10 +126,17 @@ namespace little_bits_drive_me_crazy
 
         public virtual void ResetParticle(Particle particle)
         {
+            if (particle is ParticleColorful)// Mеням цвет обратно на исходный
+            {
+                var p = (particle as ParticleColorful);
+                (particle as ParticleColorful).FromColor = ColorFrom;
+                p.ToColor = ColorTo;
+            }
             particle.Life = Particle.rnd.Next(LifeMin, LifeMax);
 
             particle.X = X;
             particle.Y = Y;
+
 
             var direction = Direction
                 + (double)Particle.rnd.Next(Spreading)

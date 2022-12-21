@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace little_bits_drive_me_crazy
 {
@@ -14,8 +15,11 @@ namespace little_bits_drive_me_crazy
     {
         List<Emitter> emitters = new List<Emitter>();
         Emitter emitter;
-        GravityPoint point1; 
-        //GravityPoint point2;
+        
+        EnterPort port;
+        
+        PrintPoint printPoint;
+        
         public Form1()
         {
             InitializeComponent();
@@ -31,28 +35,30 @@ namespace little_bits_drive_me_crazy
                 ColorTo = Color.FromArgb(0, Color.Red),
                 ParticlesPerTick = 10,
                 X = DisPic.Width / 2,
-                Y = DisPic.Height / 2,
+                Y = DisPic.Height / 2 - 150,
             };
             
             emitters.Add(this.emitter);
             
-            point1 = new GravityPoint
+            port = new EnterPort
             {
-                X = DisPic.Width / 2 + 100,
+                X = DisPic.Width / 2 - 300,
+                Y = DisPic.Height / 2,
+                X2 = DisPic.Width / 2 + 200,
+                Y2 = DisPic.Height / 2 + 100,
+            };
+           emitter.impactPoints.Add(port);
+
+            
+            
+
+            printPoint = new PrintPoint
+            {
+                Color = Color.Pink,
+                X = DisPic.Width / 2,
                 Y = DisPic.Height / 2,
             };
-            emitter.impactPoints.Add(point1);
-            /*
-            point2 = new GravityPoint
-            {
-                X = DisPic.Width / 2 - 100,
-                Y = DisPic.Height / 2,
-            };
-
-            emitter.impactPoints.Add(point1);
-            emitter.impactPoints.Add(point2);
-            */
-
+            emitter.impactPoints.Add(printPoint);
 
 
         }
@@ -98,19 +104,27 @@ namespace little_bits_drive_me_crazy
 
         private void tbGraviton_Scroll(object sender, EventArgs e)
         {
-            point1.Power = tbGraviton.Value;
+            port.Power = tbGraviton.Value;
 
         }
 
         private void tbGraviton2_Scroll(object sender, EventArgs e)
         {
-            //point2.Power = tbGraviton2.Value;
         }
 
         private void DisPic_MouseClick(object sender, MouseEventArgs e)
         {
-            point1.X = e.X;
-            point1.Y = e.Y;
+            if (e.Button == MouseButtons.Left)
+            {
+                port.X = e.X;
+                port.Y = e.Y;
+            }
+            else
+            {
+                port.X2 = e.X;
+                port.Y2 = e.Y;
+            }
+            
         }
     }
 }

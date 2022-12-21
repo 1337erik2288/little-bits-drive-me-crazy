@@ -45,7 +45,7 @@
             // 
             this.DisPic.Location = new System.Drawing.Point(0, 1);
             this.DisPic.Name = "DisPic";
-            this.DisPic.Size = new System.Drawing.Size(1003, 520);
+            this.DisPic.Size = new System.Drawing.Size(1185, 603);
             this.DisPic.TabIndex = 0;
             this.DisPic.TabStop = false;
             this.DisPic.Click += new System.EventHandler(this.DisPic_Click);
@@ -60,7 +60,7 @@
             // 
             // tbDirection
             // 
-            this.tbDirection.Location = new System.Drawing.Point(12, 537);
+            this.tbDirection.Location = new System.Drawing.Point(12, 625);
             this.tbDirection.Maximum = 359;
             this.tbDirection.Name = "tbDirection";
             this.tbDirection.Size = new System.Drawing.Size(230, 69);
@@ -70,7 +70,7 @@
             // lblDirection
             // 
             this.lblDirection.AutoSize = true;
-            this.lblDirection.Location = new System.Drawing.Point(249, 537);
+            this.lblDirection.Location = new System.Drawing.Point(249, 625);
             this.lblDirection.Name = "lblDirection";
             this.lblDirection.Size = new System.Drawing.Size(18, 20);
             this.lblDirection.TabIndex = 2;
@@ -79,7 +79,7 @@
             // 
             // tbGraviton
             // 
-            this.tbGraviton.Location = new System.Drawing.Point(306, 537);
+            this.tbGraviton.Location = new System.Drawing.Point(306, 625);
             this.tbGraviton.Maximum = 100;
             this.tbGraviton.Name = "tbGraviton";
             this.tbGraviton.Size = new System.Drawing.Size(144, 69);
@@ -88,7 +88,7 @@
             // 
             // tbGraviton2
             // 
-            this.tbGraviton2.Location = new System.Drawing.Point(479, 537);
+            this.tbGraviton2.Location = new System.Drawing.Point(479, 625);
             this.tbGraviton2.Maximum = 100;
             this.tbGraviton2.Name = "tbGraviton2";
             this.tbGraviton2.Size = new System.Drawing.Size(144, 69);
@@ -99,7 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 645);
+            this.ClientSize = new System.Drawing.Size(1185, 706);
             this.Controls.Add(this.tbGraviton2);
             this.Controls.Add(this.tbGraviton);
             this.Controls.Add(this.lblDirection);
