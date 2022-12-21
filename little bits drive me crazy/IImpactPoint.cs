@@ -15,6 +15,7 @@ namespace little_bits_drive_me_crazy
         public float X; 
         public float Y;
         public Color Color;
+        public float Prikol;
 
         
         public abstract void ImpactParticle(Particle particle);
@@ -69,6 +70,7 @@ namespace little_bits_drive_me_crazy
             double r = Math.Sqrt(gX * gX + gY * gY); 
             if (r + particle.Radius < Power / 2 + particle.Radius * 2)
             {
+                
                 float r2 = (float)Math.Max(100, gX * gX + gY * gY);
                 particle.SpeedX = 0;
                 particle.SpeedY = 0;
@@ -102,9 +104,9 @@ namespace little_bits_drive_me_crazy
 
             if (r + particle.Radius < Power / 2)
             {
-                
                 particle.X += X2 - this.X;
                 particle.Y += Y2 - this.Y;
+
             }
         }
         public override void Render(Graphics g)
@@ -154,14 +156,18 @@ namespace little_bits_drive_me_crazy
 
     public class PrintPoint : IImpactPoint
     {
+        public int Power = 100;
+
         public override void ImpactParticle(Particle particle)
         {
+            
             float gX = X - particle.X;
             float gY = Y - particle.Y;
+           
 
             double r = Math.Sqrt(gX * gX + gY * gY);
 
-            if (r + particle.Radius < 100 / 2)
+            if (r + particle.Radius < Power / 2)
             {
                 
                 if (particle is ParticleColorful)
@@ -180,10 +186,10 @@ namespace little_bits_drive_me_crazy
         {
             g.DrawEllipse(
                    new Pen(Color.Red),
-                   X - 100 / 2,
-                   Y - 100 / 2,
-                   100,
-                   100
+                   X - Power / 2,
+                   Y - Power / 2,
+                   Power,
+                   Power
                );
         }
     }

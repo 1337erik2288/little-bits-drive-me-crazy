@@ -17,6 +17,7 @@ namespace little_bits_drive_me_crazy
         Emitter emitter;
         
         EnterPort port;
+        AntiGravityPoint antig;
         
         PrintPoint printPoint;
         
@@ -39,7 +40,14 @@ namespace little_bits_drive_me_crazy
             };
             
             emitters.Add(this.emitter);
-            
+
+            antig = new AntiGravityPoint
+            {
+                X = DisPic.Width / 2,
+                Y = DisPic.Height / 2
+            };
+            emitter.impactPoints.Add(antig);
+
             port = new EnterPort
             {
                 X = DisPic.Width / 2 - 300,
@@ -49,9 +57,6 @@ namespace little_bits_drive_me_crazy
             };
            emitter.impactPoints.Add(port);
 
-            
-            
-
             printPoint = new PrintPoint
             {
                 Color = Color.Pink,
@@ -59,7 +64,6 @@ namespace little_bits_drive_me_crazy
                 Y = DisPic.Height / 2,
             };
             emitter.impactPoints.Add(printPoint);
-
 
         }
         private int MousePositionX = 0;
@@ -87,8 +91,10 @@ namespace little_bits_drive_me_crazy
         private void DisPic_MouseMove(object sender, MouseEventArgs e)
         {
              
-            //emitter.MousePositionX = e.X;
-            //emitter.MousePositionY = e.Y;
+            emitter.MousePositionX = e.X;
+            emitter.MousePositionY = e.Y;
+            antig.X = e.X;
+            antig.Y = e.Y;
         }
 
         private void tbDirection_Scroll(object sender, EventArgs e)
@@ -110,6 +116,7 @@ namespace little_bits_drive_me_crazy
 
         private void tbGraviton2_Scroll(object sender, EventArgs e)
         {
+            printPoint.Power = tbGraviton2.Value;
         }
 
         private void DisPic_MouseClick(object sender, MouseEventArgs e)

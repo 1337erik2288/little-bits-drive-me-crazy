@@ -35,6 +35,9 @@
             this.lblDirection = new System.Windows.Forms.Label();
             this.tbGraviton = new System.Windows.Forms.TrackBar();
             this.tbGraviton2 = new System.Windows.Forms.TrackBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DisPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbDirection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGraviton)).BeginInit();
@@ -95,11 +98,41 @@
             this.tbGraviton2.TabIndex = 4;
             this.tbGraviton2.Scroll += new System.EventHandler(this.tbGraviton2_Scroll);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(308, 674);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 20);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Размер порталов";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(474, 674);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(149, 20);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Размер красителя";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(49, 674);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(169, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Направление частиц";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1185, 706);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.tbGraviton2);
             this.Controls.Add(this.tbGraviton);
             this.Controls.Add(this.lblDirection);
@@ -124,6 +157,9 @@
         private System.Windows.Forms.Label lblDirection;
         private System.Windows.Forms.TrackBar tbGraviton;
         private System.Windows.Forms.TrackBar tbGraviton2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

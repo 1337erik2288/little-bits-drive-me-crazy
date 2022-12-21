@@ -16,6 +16,7 @@ namespace little_bits_drive_me_crazy
         public float SpeedX; 
         public float SpeedY; 
         public float Life;
+
         
 
         public static Random rnd = new Random();
